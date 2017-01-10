@@ -10,20 +10,20 @@
   "author": "Tyler McGinnis <tylermcginnis33@gmail.com> (http://tylermcginnis.com)",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.9.0",
-    "react": "^0.14.6",
-    "react-addons-css-transition-group": "^0.14.6",
-    "react-dom": "^0.14.6",
-    "react-router": "^2.0.0-rc5"
+    "axios": "^0.15.3",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router": "^3.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.4.5",
-    "babel-loader": "^6.2.1",
-    "babel-preset-react": "^6.3.13",
-    "css-loader": "^0.23.1",
-    "html-webpack-plugin": "^2.7.1",
-    "style-loader": "^0.13.0",
-    "webpack": "^1.12.11",
-    "webpack-dev-server": "^1.14.1"
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.26.1",
+    "html-webpack-plugin": "^2.26.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
   }
 }
