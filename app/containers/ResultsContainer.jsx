@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Results from '../components/Results';
-import githubHelpers from '../utils/githubHelpers';
+import { battle } from '../utils/githubHelpers';
 
 class ResultsContainer extends Component {
   constructor(props) {
@@ -12,14 +12,16 @@ class ResultsContainer extends Component {
     };
   }
 
-  componentDidMount() {
-    githubHelpers.battle(this.props.location.state.playersInfo)
-      .then((s) => {
+  async componentDidMount() {
+    try {
+      const scores = await battle(this.props.location.state.playersInfo);
         this.setState({
-          scores: s,
+          scores,
           isLoading: false,
         });
-      });
+    } catch (error) {
+      console.error('Error in ResultsContainer: ', error);
+    }
   }
 
   render() {

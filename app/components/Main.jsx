@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import '../main.css';
 
-require('../main.css');
-
-function Main(props) {
+function Main({ children, location }) {
   return (
     <div className="main-container">
       <ReactCSSTransitionGroup
@@ -11,7 +10,7 @@ function Main(props) {
         transitionEnterTimeout={500}
         transitionLeaveTimeout={500}
       >
-        {React.cloneElement(props.children, { key: props.location.pathname })}
+        {React.cloneElement(children, { key: location.pathname })}
       </ReactCSSTransitionGroup>
     </div>
   );

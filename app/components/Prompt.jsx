@@ -1,19 +1,19 @@
 import React, { PropTypes } from 'react';
 import { transparentBg } from '../styles';
 
-function Prompt(props) {
+function Prompt({ header, onSubmitUser, onUpdateUser, username }) {
   return (
     <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
-      <h1>{props.header}</h1>
+      <h1>{header}</h1>
       <div className="col-sm-12">
-        <form onSubmit={props.onSubmitUser}>
+        <form onSubmit={onSubmitUser}>
           <div className="form-group">
             <input
               className="form-control"
-              onChange={props.onUpdateUser}
+              onChange={onUpdateUser}
               placeholder="Github Username"
               type="text"
-              value={props.username}
+              value={username}
             />
           </div>
           <div className="form-group col-sm-4 col-sm-offset-4">

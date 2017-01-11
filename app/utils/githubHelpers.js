@@ -5,21 +5,25 @@ const sec = 'YOUR_SECRET_ID';
 const param = `?client_id=${id}&client_secret=${sec}`;
 
 function getUserInfo(username) {
-  return axios.get(`https://api.github.com/users/${username}${param}`);
+  return axios.get(`https://api.github.com/users/${username + param}`);
 }
 
 function getRepos(username) {
   return axios.get(`https://api.github.com/users/${username}/repos${param}&per_page=100`);
 }
 
-function getTotalStars(repos) {
-  return repos.data.reduce((prev, current) => prev + current.stargazers_count, 0);
+function getTotalStars({ data }) {
+  return data.reduce((prev, current) => prev + current.stargazers_count, 0);
 }
 
-function getPlayersData(player) {
-  return getRepos(player.login)
-    .then(getTotalStars)
-    .then(total => ({ followers: player.followers, totalStars: total }));
+async function getPlayersData({ followers, login }) {
+  try {
+    const repos = await getRepos(login);
+    const totalStars = await getTotalStars(repos);
+    return { followers, totalStars };
+  } catch (error) {
+    console.error('Error in getPlayersData: ', error);
+  }
 }
 
 function calculateScores(players) {
@@ -29,19 +33,22 @@ function calculateScores(players) {
   ];
 }
 
-const helpers = {
-  getPlayersInfo(players) {
-    return axios.all(players.map(getUserInfo))
-      .then(info => info.map(user => user.data))
-      .catch(err => console.warn('Error in getPlayersInfo: ', err));
-  },
-  battle(players) {
+export async function getPlayersInfo(players) {
+  try {
+    const userInfo = await Promise.all(players.map(getUserInfo));
+    return userInfo.map(user => user.data);
+  } catch (error) {
+    console.error('Error in getPlayersInfo: ', error);
+  }
+}
+
+export async function battle(players) {
+  try {
     const playerOneData = getPlayersData(players[0]);
     const playerTwoData = getPlayersData(players[1]);
-    return axios.all([playerOneData, playerTwoData])
-      .then(calculateScores)
-      .catch(err => console.warn('Error in getPlayersInfo: ', err));
-  },
-};
-
-export default helpers;
+    const playersData = await Promise.all([playerOneData, playerTwoData]);
+    return calculateScores(playersData);
+  } catch (error) {
+    console.error('Error in getPlayersInfo: ', error)
+  }
+}
