@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Prompt from '../components/Prompt';
 
 class PromptContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       username: '',

@@ -3,8 +3,8 @@ import ConfirmBattle from '../components/ConfirmBattle';
 import { getPlayersInfo } from '../utils/githubHelpers';
 
 class ConfirmBattleContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       isLoading: true,

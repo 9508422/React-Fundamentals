@@ -3,8 +3,8 @@ import Results from '../components/Results';
 import { battle } from '../utils/githubHelpers';
 
 class ResultsContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       isLoading: true,
@@ -15,10 +15,10 @@ class ResultsContainer extends Component {
   async componentDidMount() {
     try {
       const scores = await battle(this.props.location.state.playersInfo);
-        this.setState({
-          scores,
-          isLoading: false,
-        });
+      this.setState({
+        scores,
+        isLoading: false,
+      });
     } catch (error) {
       console.error('Error in ResultsContainer: ', error);
     }
