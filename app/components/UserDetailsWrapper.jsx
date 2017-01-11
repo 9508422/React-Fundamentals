@@ -14,8 +14,8 @@ UserDetailsWrapper.header = {
 };
 
 UserDetailsWrapper.propTypes = {
-  header: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  header: PropTypes.string.isRequired,
 };
 
 export default UserDetailsWrapper;

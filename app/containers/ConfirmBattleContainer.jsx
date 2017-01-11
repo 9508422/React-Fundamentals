@@ -35,11 +35,12 @@ class ConfirmBattleContainer extends Component {
   }
 
   render() {
+    const { isLoading, playersInfo } = this.state;
     return (
       <ConfirmBattle
-        isLoading={this.state.isLoading}
+        isLoading={isLoading}
         onInitiateBattle={() => this.handleInitiateBattle()}
-        playersInfo={this.state.playersInfo}
+        playersInfo={playersInfo}
       />
     );
   }

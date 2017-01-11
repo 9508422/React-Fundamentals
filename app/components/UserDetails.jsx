@@ -20,7 +20,6 @@ function UserDetails({ score, info }) {
 }
 
 UserDetails.propTypes = {
-  score: PropTypes.number,
   info: PropTypes.shape({
     avatar_url: PropTypes.string.isRequired,
     blog: PropTypes.string,
@@ -32,10 +31,10 @@ UserDetails.propTypes = {
     name: PropTypes.string,
     public_repos: PropTypes.number.isRequired,
   }),
+  score: PropTypes.number,
 };
 
 UserDetails.defaultProps = {
-  score: 0,
   info: {
     avatar_url: '',
     blog: '',
@@ -47,6 +46,7 @@ UserDetails.defaultProps = {
     name: '',
     public_repos: 0,
   },
+  score: 0,
 };
 
 export default UserDetails;

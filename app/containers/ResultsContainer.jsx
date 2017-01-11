@@ -25,11 +25,12 @@ class ResultsContainer extends Component {
   }
 
   render() {
+    const { isLoading, scores } = this.state;
     return (
       <Results
-        isLoading={this.state.isLoading}
+        isLoading={isLoading}
         playersInfo={this.props.location.state.playersInfo}
-        scores={this.state.scores}
+        scores={scores}
       />
     );
   }
